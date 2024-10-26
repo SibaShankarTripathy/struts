@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<struts-config>
+	<!-- Step-4 Read below comment carefully -->
+	
+	<!-- By using form-beans we are declaring our bean class which is created 
+		in SRC folder -->
+	<!-- Here name="EMP" is reference name and type attribute is declaring class 
+		name -->
+	<form-beans>
+		<form-bean name="EMP" type="formBeans.Employee" />
+	</form-beans>
+
+	<!-- Here we are mapping our view page(index.jsp) with our bean class created 
+		in SRC folder -->
+	<!-- Here path="/register" it should be same as action="register" in form tag of index.jsp 
+		page -->
+	<!-- Here name="EMP" must match with name="EMP" of above form-bean tag to 
+		store value in bean class variable -->
+	<!-- Here input="/index.jsp" means we are mentioning from where we are getting 
+		the value from user -->
+	<action-mappings>
+		<action path="/register" name="EMP" input="/index.jsp" type="formController.EmployeeController">
+		<forward name="ess" path="/success.jsp"/>
+		</action>
+	</action-mappings>
+
+
+</struts-config>

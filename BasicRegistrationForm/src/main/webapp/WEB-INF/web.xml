@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<!-- Step-1 This is our web.xml file which is starting point of every program -->
+	<!-- Just a name of a program and it will reflect in url -->
+	<display-name>BasicRegistrationForm</display-name>
+
+	<!-- Now here you will move to Step-2 process by using welcome-file-list 
+		tag and redirect to index.jsp page -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- Step-3 This is action tag where we are calling to ActionServlet -->
+
+	<!-- Declaration of one dispatcherServlet. Here we are mention servlet-name 
+		as action but you can give some other name also -->
+
+	<!-- Here our dispatcherServlet is ActionServlet so we declare servlet-class 
+		as ActionServlet -->
+
+	<!-- *There is different type of SERVLET class follow notes -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+		<!-- The above ActionServlet will find our struts.xml file by using init-param 
+			which will execute before doPost and doGet method -->
+		<!-- Now it will move to struts.xml file as Step-4 -->
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+
+		<!-- This below line only responsible to give command to ActionServlet 
+			for execution of init-param before execute of doPost and doGet methods -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- This is a mapping with SERVLET name to execute program. This is URL 
+		pattern structure and we must need to maintain. -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.sibaLanguage</url-pattern>
+	</servlet-mapping>
+	<!-- Now Program is ready to run execute controller class methods as Step-5 -->
+</web-app>
